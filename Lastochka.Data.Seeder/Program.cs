@@ -1,8 +1,6 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 
-using Lastochka.Data.Xml;
-
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.EntityFrameworkCore.Internal;
@@ -14,20 +12,20 @@ namespace Lastochka.Data.Seeder
         internal static readonly string[] arguments = {
             "User ID=postgres;Password=postgres;Host=localhost;Port=5432;Database=Lastochka;Pooling=true;"
         };
-
+        /*
         static async Task Main(string[] args)
         {
 
             using (var context = new LastochkaShopDbContextFactory().CreateDbContext(arguments)) {
 
-                /*
+                
                 var shop = LastochkaXmlDataReader.ReadFromFile(LastochkaXmlDataReader.Filename);
 
                 await context.AddRangeAsync(shop.Categories.Category);
                 await context.AddRangeAsync(shop.Offers.Offer);
 
                 var r = await context.SaveChangesAsync();
-                */
+                
             }
             
         }
@@ -43,5 +41,6 @@ namespace Lastochka.Data.Seeder
                 return new LastochkaShopDbContext(optionsBuilder.Options);
             }
         }
+        */
     }
 }

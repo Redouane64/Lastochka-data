@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -8,7 +8,5 @@
   <ItemGroup>
     <ProjectReference Include="..\Lastochka.Data\Lastochka.Data.csproj" />
   </ItemGroup>
-
-  <Import Project="..\Lastochka.Shared\Lastochka.Shared.projitems" Label="Shared" />
 
 </Project>

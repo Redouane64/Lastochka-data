@@ -5,16 +5,15 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
 
-using Lastochka.Data.Xml;
 using Microsoft.EntityFrameworkCore;
 
-namespace Lastochka.Data
+namespace Lastochka.Data.Xml
 {
     public class LastochkaXmlDataReader
     {
         public const string Filename = "Ласточка.xml";
         public const int FileEncodingCodePage = 1251;
-
+        /*
         public static Shop ReadFromFile(string filename)
         {
             Shop shop = null;
@@ -53,6 +52,6 @@ namespace Lastochka.Data
 
             return shop;
         }
-
+        */
     }
 }
