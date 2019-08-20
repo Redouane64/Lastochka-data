@@ -38,6 +38,8 @@ namespace Lastochka.Data
                 entity.HasOne(d => d.Category)
                     .WithMany(p => p.Offers)
                     .HasForeignKey(d => d.CategoryId);
+
+                entity.Property(o => o.Id).ValueGeneratedNever();
             });
 
             OnModelCreatingPartial(modelBuilder);

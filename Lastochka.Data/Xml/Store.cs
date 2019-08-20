@@ -8,31 +8,33 @@ namespace Lastochka.Data.Xml
 
      http://www.apache.org/licenses/LICENSE-2.0
      */
+    
     [XmlRoot(ElementName = "currency")]
     public class Currency
     {
         [XmlAttribute(AttributeName = "id")]
-        public string Id { get; set; }
+        public CurrencyType Id { get; set; }
         [XmlAttribute(AttributeName = "rate")]
-        public string Rate { get; set; }
+        public float Rate { get; set; }
     }
+    
 
     [XmlRoot(ElementName = "currencies")]
     public class Currencies
     {
         [XmlElement(ElementName = "currency")]
-        public List<Currency> Currency { get; set; }
+        public List<CurrencyType> Currency { get; set; }
     }
 
     [XmlRoot(ElementName = "category")]
     public class Category
     {
         [XmlAttribute(AttributeName = "id")]
-        public string Id { get; set; }
+        public int Id { get; set; }
         [XmlText]
         public string Text { get; set; }
         [XmlAttribute(AttributeName = "parentId")]
-        public string ParentId { get; set; }
+        public int ParentId { get; set; }
     }
 
     [XmlRoot(ElementName = "categories")]
@@ -48,21 +50,23 @@ namespace Lastochka.Data.Xml
         [XmlElement(ElementName = "url")]
         public string Url { get; set; }
         [XmlElement(ElementName = "price")]
-        public string Price { get; set; }
+        public decimal Price { get; set; }
         [XmlElement(ElementName = "oldprice")]
-        public string Oldprice { get; set; }
+        public decimal Oldprice { get; set; }
+        /*
         [XmlElement(ElementName = "currencyId")]
-        public string CurrencyId { get; set; }
+        public CurrencyType CurrencyId { get; set; }
+        */
         [XmlElement(ElementName = "categoryId")]
-        public string CategoryId { get; set; }
+        public int CategoryId { get; set; }
         [XmlElement(ElementName = "name")]
         public string Name { get; set; }
         [XmlElement(ElementName = "description")]
         public string Description { get; set; }
         [XmlAttribute(AttributeName = "id")]
-        public string Id { get; set; }
+        public int Id { get; set; }
         [XmlAttribute(AttributeName = "available")]
-        public string Available { get; set; }
+        public bool Available { get; set; }
         [XmlElement(ElementName = "picture")]
         public string Picture { get; set; }
     }
@@ -77,15 +81,27 @@ namespace Lastochka.Data.Xml
     [XmlRoot(ElementName = "shop")]
     public class Shop
     {
+        /*
         [XmlElement(ElementName = "currencies")]
         public Currencies Currencies { get; set; }
+        */
+
         [XmlElement(ElementName = "categories")]
         public Categories Categories { get; set; }
+
         [XmlElement(ElementName = "offers")]
         public Offers Offers { get; set; }
+
         [XmlAttribute(AttributeName = "name")]
         public string Name { get; set; }
     }
 
-
+    public enum CurrencyType
+    {
+        [XmlEnum(Name = "RUB")]RUB,
+        [XmlEnum(Name = "EUR")]EUR,
+        [XmlEnum(Name = "USD")]USD,
+        [XmlEnum(Name = "UAH")]UAH,
+        [XmlEnum(Name = "BYN")]BYN
+    }
 }

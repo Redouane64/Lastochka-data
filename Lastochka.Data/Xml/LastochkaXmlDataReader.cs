@@ -1,11 +1,8 @@
 ﻿using System;
 using System.IO;
 using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
-
-using Microsoft.EntityFrameworkCore;
 
 namespace Lastochka.Data.Xml
 {
@@ -13,7 +10,7 @@ namespace Lastochka.Data.Xml
     {
         public const string Filename = "Ласточка.xml";
         public const int FileEncodingCodePage = 1251;
-        /*
+       
         public static Shop ReadFromFile(string filename)
         {
             Shop shop = null;
@@ -31,8 +28,7 @@ namespace Lastochka.Data.Xml
                         typeof(Category),
                         typeof(Offer),
                         typeof(Offers),
-                        typeof(CurrencyTypes),
-                        typeof(int?)
+                        typeof(CurrencyType)
                     });
 
                 using (var xmlFileStream = new StreamReader(filename, Encoding.GetEncoding(FileEncodingCodePage)))
@@ -52,6 +48,6 @@ namespace Lastochka.Data.Xml
 
             return shop;
         }
-        */
+        
     }
 }
