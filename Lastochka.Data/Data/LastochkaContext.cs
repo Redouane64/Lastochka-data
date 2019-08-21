@@ -1,15 +1,13 @@
-﻿using System;
+﻿using System.Collections.Generic;
+
+using Lastochka.Data.Xml;
+
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace Lastochka.Data
 {
-    public partial class LastochkaContext : DbContext
+    public class LastochkaContext : DbContext
     {
-        public LastochkaContext()
-        {
-        }
-
         public LastochkaContext(DbContextOptions<LastochkaContext> options)
             : base(options)
         {
@@ -17,13 +15,6 @@ namespace Lastochka.Data
 
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Offer> Offers { get; set; }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-            }
-        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -39,12 +30,27 @@ namespace Lastochka.Data
                     .WithMany(p => p.Offers)
                     .HasForeignKey(d => d.CategoryId);
 
-                entity.Property(o => o.Id).ValueGeneratedNever();
             });
 
-            OnModelCreatingPartial(modelBuilder);
+            modelBuilder.Entity<Category>()
+                .Property(c => c.Id).ValueGeneratedNever();
+
+            modelBuilder.Entity<Offer>()
+                .Property(o => o.Id).ValueGeneratedNever();
+
+            var shop = LastochkaXmlDataReader.ReadFromFile(LastochkaXmlDataReader.Filename);
+            var mapper = MapperProfile.Singleton;
+
+            var categories = mapper.Map<List<Category>>(shop.Categories.Category);
+            var offers = mapper.Map<List<Offer>>(shop.Offers.Offer);
+
+
+            modelBuilder.Entity<Category>()
+                .HasData(categories);
+
+            modelBuilder.Entity<Offer>()
+                .HasData(offers);
         }
 
-        partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
     }
 }

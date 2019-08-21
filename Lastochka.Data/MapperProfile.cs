@@ -21,6 +21,7 @@ namespace Lastochka.Data
 
             CreateMap<Xml.Offer, Data.Offer>()
                 .ForMember(dest => dest.LastModified, options => options.MapFrom(s => DateTime.UtcNow))
+                .ForMember(dest => dest.Price, options => options.MapFrom(s => s.Oldprice == 0m ? s.Price : s.Oldprice))
                 .ForMember(dest => dest.Discount, options => options.MapFrom(s => CalculateDiscount(s.Price, s.Oldprice)));
         }
 

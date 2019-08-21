@@ -4,12 +4,9 @@ using System.Threading.Tasks;
 
 using Lastochka.Data.Xml;
 
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Design;
-
 namespace Lastochka.Data.Seeder
 {
-    class Program
+    partial class Program
     {
         internal static readonly string[] arguments = {
             "Server=(LocalDB)\\MSSQLLocalDB;Database=Lastochka.Development;Trusted_Connection=True;"
@@ -19,7 +16,7 @@ namespace Lastochka.Data.Seeder
 
             using (var context = new LastochkaShopDbContextFactory().CreateDbContext(arguments)) {
 
-                
+                /*
                 var shop = LastochkaXmlDataReader.ReadFromFile(LastochkaXmlDataReader.Filename);
                 var mapper = MapperProfile.Singleton;
 
@@ -28,18 +25,20 @@ namespace Lastochka.Data.Seeder
 
                 await context.AddRangeAsync(categories);
                 await context.AddRangeAsync(offers);
+                */
 
                 int result = 0;
                 try
                 {
-                    context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT dbo.Categories ON");
-                    context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT dbo.Offers ON");
+                    /*
+                    var a = context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT dbo.Categories ON");
+                    var b = context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT dbo.Offers ON");
 
                     result = await context.SaveChangesAsync();
 
-                    context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT dbo.Categories OFF");
-                    context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT dbo.Offers OFF");
-
+                    var c = context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT dbo.Categories OFF");
+                    var d = context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT dbo.Offers OFF");
+                    */
                 }
                 catch (Exception ex)
                 {
@@ -55,19 +54,6 @@ namespace Lastochka.Data.Seeder
                 Console.WriteLine($"{result} record saved.");
             }
 
-        }
-
-        
-        public class LastochkaShopDbContextFactory : IDesignTimeDbContextFactory<LastochkaContext>
-        {
-
-            public LastochkaContext CreateDbContext(string[] args)
-            {
-                var optionsBuilder = new DbContextOptionsBuilder<LastochkaContext>();
-                optionsBuilder.UseSqlServer(args.Length > 0 ? args[0] : arguments[0]);
-
-                return new LastochkaContext(optionsBuilder.Options);
-            }
         }
         
     }

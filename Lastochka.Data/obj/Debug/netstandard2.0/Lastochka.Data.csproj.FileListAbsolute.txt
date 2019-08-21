@@ -1,7 +1,0 @@
-C:\Source\Lastochka-data\Lastochka.Data\bin\Debug\netstandard2.0\Ласточка.xml
-C:\Source\Lastochka-data\Lastochka.Data\bin\Debug\netstandard2.0\Lastochka.Data.deps.json
-C:\Source\Lastochka-data\Lastochka.Data\bin\Debug\netstandard2.0\Lastochka.Data.dll
-C:\Source\Lastochka-data\Lastochka.Data\obj\Debug\netstandard2.0\Lastochka.Data.csprojAssemblyReference.cache
-C:\Source\Lastochka-data\Lastochka.Data\obj\Debug\netstandard2.0\Lastochka.Data.csproj.CoreCompileInputs.cache
-C:\Source\Lastochka-data\Lastochka.Data\obj\Debug\netstandard2.0\Lastochka.Data.AssemblyInfoInputs.cache
-C:\Source\Lastochka-data\Lastochka.Data\obj\Debug\netstandard2.0\Lastochka.Data.AssemblyInfo.cs
