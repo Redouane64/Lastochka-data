@@ -1,7 +1,7 @@
-﻿using System.Xml.Serialization;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Xml.Serialization;
 
-namespace Lastochka.Data.Xml
+namespace Lastochka.Data.Domain
 {
     [XmlRoot(ElementName = "currencies")]
     public class Currencies
@@ -9,5 +9,4 @@ namespace Lastochka.Data.Xml
         [XmlElement(ElementName = "currency")]
         public List<Currency> Currency { get; set; }
     }
-
 }

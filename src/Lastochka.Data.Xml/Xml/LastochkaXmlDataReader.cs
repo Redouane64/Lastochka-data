@@ -1,21 +1,19 @@
 ﻿using System;
 using System.IO;
 using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
 
-using Lastochka.Data.Xml;
-using Microsoft.EntityFrameworkCore;
+using Lastochka.Data.Domain;
 
-namespace Lastochka.Data
+namespace Lastochka.Data.Xml
 {
-    public class LastochkaXmlDataReader
+    public static class LastochkaXmlDataReader
     {
         public const string Filename = "Ласточка.xml";
         public const int FileEncodingCodePage = 1251;
-
-        public static Shop ReadFromFile(string filename)
+       
+        public static Shop ParseFile()
         {
             Shop shop = null;
 
@@ -32,14 +30,13 @@ namespace Lastochka.Data
                         typeof(Category),
                         typeof(Offer),
                         typeof(Offers),
-                        typeof(CurrencyTypes),
-                        typeof(int?)
+                        typeof(CurrencyType)
                     });
 
-                using (var xmlFileStream = new StreamReader(filename, Encoding.GetEncoding(FileEncodingCodePage)))
+                using (var xmlFileStream = new StreamReader(Filename, Encoding.GetEncoding(FileEncodingCodePage)))
                 using (var xmlReader = new XmlTextReader(xmlFileStream))
                 {
-                    xmlReader.Normalization = false;
+                    xmlReader.Normalization = true;
 
                     shop = (Shop)serializer.Deserialize(xmlReader);
                 }
@@ -53,6 +50,6 @@ namespace Lastochka.Data
 
             return shop;
         }
-
+        
     }
 }

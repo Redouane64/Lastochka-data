@@ -1,7 +1,7 @@
-﻿using System.Xml.Serialization;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Xml.Serialization;
 
-namespace Lastochka.Data.Xml
+namespace Lastochka.Data.Domain
 {
     [XmlRoot(ElementName = "categories")]
     public class Categories
@@ -9,5 +9,4 @@ namespace Lastochka.Data.Xml
         [XmlElement(ElementName = "category")]
         public List<Category> Category { get; set; }
     }
-
 }
